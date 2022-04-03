@@ -610,7 +610,7 @@ public class ExcelUtil<T> {
      *
      * @return 结果
      */
-    public AjaxResult exportExcel()
+    private AjaxResult exportExcel()
     {
         OutputStream out = null;
         try
@@ -720,7 +720,7 @@ public class ExcelUtil<T> {
         int startNo = index * sheetSize;
         int endNo = Math.min(startNo+sheetSize,list.size());
         for (int i = startNo; i <endNo ; i++) {
-            sheet.createRow(i+1+rownum -startNo);
+            row = sheet.createRow(i+1+rownum -startNo);
             // 得到导出对象.
             T vo =  (T)list.get(i);
             int column = 0;
