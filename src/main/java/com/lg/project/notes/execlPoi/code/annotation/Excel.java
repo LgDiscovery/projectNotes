@@ -160,15 +160,15 @@ public @interface Excel {
 
     enum Align{
 
-        AUTO(0),LEFT(1),CENTER(2),RIGHT(3);
+        AUTO("Auto"),LEFT("Left"),CENTER("Center"),RIGHT("Right");
 
-        private final int value;
+        private final String value;
 
-        Align(int value){
+        Align(String value){
             this.value = value;
         }
 
-        public int value(){
+        public String value(){
             return this.value;
         }
     }
