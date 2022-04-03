@@ -64,7 +64,58 @@
                 createTitle();
             }
     
-    
+    3.
+        /**
+             * @description: 对list数据源将其里面的数据导入到excel表单
+             * @param: response
+             * @return: void
+             * @author liuguang
+             * @date: 2022/4/3 11:52
+             */
+            public void exportExcel(HttpServletResponse response){
+                try{
+                    //1.填充数据sheet数据
+                    writeSheet();
+                    //2.把工作薄对象写出去
+                    wb.write(response.getOutputStream());
+                }catch (Exception e){
+                    log.error("导出Excel异常{}",e.getMessage());
+                }finally {
+                    IOUtils.closeQuietly(wb);
+                }
+            }
+        
+            /**
+             * @description: 创建写入数据到Sheet  需要注意一个sheet 和多个sheet处理情况
+             * @param:
+             * @return: void
+             * @author liuguang
+             * @date: 2022/4/3 11:57
+             */
+            public void writeSheet(){
+                //1.先判断有多少个sheet
+                int sheetNo = Math.max(1,(int)Math.ceil(list.size() * 1.0 / sheetSize));
+                for (int index = 0; index < sheetNo; index++) {
+                    //创建sheet init() 创建过一个 sheet 所以注意逻辑
+                    createSheet(sheetNo,index);
+                    // 产生一行
+                    Row row = sheet.createRow(rownum);
+                    int column = 0;
+                    // 写入各个字段的列头名称
+                    for(Object[] os:fields){
+                        Excel excel = (Excel)os[1];
+                        //创建头部标题
+                        createHeaderCell(excel,row,column++);
+                    }
+        
+                    if(Type.EXPORT.equals(type)){
+                        // 填从数据
+                        fillExcelData(index,row);
+                        //在末尾添加统计行
+                        addStatisticsRow();
+                    }
+                }
+            }
    
  
  
