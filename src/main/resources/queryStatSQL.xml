@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    &lt; < 小于号
+    &gt; > 大于号
+    &amp; & 取址符
+    &quot; " 引号
+    id 节点value属性标识唯一的sql模板
+    在sql节点中的value属性为sql模板，其中 "?" 标识需要替换的参数位置。
+    如果某个条件肯定存在则只需要在参数位置用 ？代替。
+    如果某位置的条件可能存在也可能不存在 ，那么需要将整个条件用 ？代替，并且在对应位置的param中配置上model属性
+    model 中只需要写出条件以及用？替代参数，而不需要and 或者or 连接 参考例子
+    param 节点要求参数的顺序，与sql的value属性模板中的？的循序保持一致。
+-->
+<map>
+    <id value="" desc="">
+        <sql value="">
+
+            <param value=""/>
+            <param value="" model=""/>
+        </sql>
+    </id>
+</map>
