@@ -2,15 +2,12 @@ package com.lg.project.notes.common.digesterXml;
 
 
 import org.apache.commons.digester3.Digester;
-import org.apache.poi.xddf.usermodel.HasShapeProperties;
 import org.xml.sax.SAXException;
-import sun.awt.SunHints;
 
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Objects;
 
