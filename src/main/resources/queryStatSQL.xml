@@ -12,9 +12,10 @@
     param 节点要求参数的顺序，与sql的value属性模板中的？的循序保持一致。
 -->
 <map>
-    <id value="" desc="">
-        <sql value="">
-
+    <id value="20220628092310" desc="一个例子">
+        <sql value="
+            select * from dual
+            ">
             <param value=""/>
             <param value="" model=""/>
         </sql>
